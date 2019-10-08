@@ -137,6 +137,7 @@ class socialShare extends LitElement {
             <a
               href="${this.wappurl}"
               aria-label="Share on WhatsApp"
+              rel="noopener"
               data-action="share/whatsapp/share"
               target="_blank"
             >
