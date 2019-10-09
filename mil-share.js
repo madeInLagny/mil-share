@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element";
 import { fbLogo, twLogo, mailLogo, wappLogo, share } from "./social-icons.js";
 import "@polymer/iron-dropdown";
 
-class socialShare extends LitElement {
+class milShare extends LitElement {
   /**
    * Declared properties and their corresponding attributes
    */
@@ -58,7 +58,7 @@ class socialShare extends LitElement {
           padding: 0.5rem 0;
           margin: 0.125rem 0 0;
           font-size: 1rem;
-          color: var(--body-text-color, #555);
+          color: var(--body-text-color, black);
           text-align: left;
           list-style: none;
           background-color: #ffffff;
@@ -83,7 +83,7 @@ class socialShare extends LitElement {
         #header {
           padding: 10px;
           font-size: 16px;
-          color: var(--body-text-color, #555);
+          color: #555;
         }
       `
     ];
@@ -137,7 +137,6 @@ class socialShare extends LitElement {
             <a
               href="${this.wappurl}"
               aria-label="Share on WhatsApp"
-              rel="noopener"
               data-action="share/whatsapp/share"
               target="_blank"
             >
@@ -158,4 +157,4 @@ class socialShare extends LitElement {
   }
 }
 
-customElements.define("social-share", socialShare);
+customElements.define("mil-share", milShare);

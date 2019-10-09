@@ -1,9 +1,11 @@
 {
   "name": "mil-share",
   "author": "MIL Made In Lagny",
+  "license": "MIT",
   "keywords": [
     "share",
     "social networks",
+    "notifications",
     "facebook",
     "twitter",
     "whatsapp",
@@ -17,21 +19,12 @@
     "url": "https://github.com/madeInLagny/mil-share.git"
   },
   "homepage": "https://github.com/madeInLagny/mil-share",
-  "version": "1.0.0",
-  "description": "Webcomponent to share current url on social networks.",
+  "version": "1.0.2",
+  "description": "'Webcomponent that let share the current url on social networks and by email. Available links: Facebook, Twitter, Whatsapp, email.",
   "main": "mil-share.js",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0",
-    "lit-element": "^2.2.1",
-    "@polymer/iron-dropdown": "^3.0.1"
-  },
-  "devDependencies": {
-    "@polymer/iron-component-page": "^3.0.0-pre.20",
-    "@polymer/iron-demo-helpers": "^3.1.0",
-    "@polymer/test-fixture": "^4.0.2",
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4",
-    "wct-mocha": "^1.0.1"
+    "@polymer/iron-dropdown": "^3.0.1",
+    "@webcomponents/webcomponentsjs": "latest",
+    "lit-element": "latest"
   }
 }
