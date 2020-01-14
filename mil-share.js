@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element";
 import { fbLogo, twLogo, mailLogo, wappLogo, share } from "./social-icons.js";
-import "@polymer/iron-dropdown";
 
 class milShare extends LitElement {
   /**
@@ -12,7 +11,8 @@ class milShare extends LitElement {
       twurl: { type: String },
       emailurl: { type: String },
       wappurl: { type: String },
-      header: { type: String }
+      header: { type: String },
+      opened: { type: String }
     };
   }
 
@@ -29,19 +29,16 @@ class milShare extends LitElement {
     this.emailurl = "mailto:?body=" + url;
     this.wappurl = "https://api.whatsapp.com/send?phone=&text=" + url;
     this.header = "Share this page";
+    this.opened = false;
   }
 
   static get styles() {
     return [
       css`
         :host {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        #container {
-          display: inline-block;
+          display: inline-flex !important;
+          flex-direction: column;
+          align-items: flex-end;
         }
 
         a {
@@ -53,11 +50,16 @@ class milShare extends LitElement {
           padding-left: 10px;
         }
 
-        #dropdown {
+        #dropdownPanel.opened {
+          opacity: 1;
+        }
+
+        #dropdownPanel {
+          position: absolute;
           min-width: 10rem;
           padding: 0.5rem 0;
-          margin: 0.125rem 0 0;
-          font-size: 1rem;
+          margin-top: 2rem;
+          margin-right: 0.5rem;
           color: var(--body-text-color, black);
           text-align: left;
           list-style: none;
@@ -66,8 +68,10 @@ class milShare extends LitElement {
           border: 1px solid rgba(0, 0, 0, 0.15);
           border-radius: 0.25rem;
           z-index: 100;
-          transform: translate3d(0, 0, 1px);
           box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+          opacity: 0;
+          -webkit-transition: opacity 0.3s ease;
+          transition: opacity 0.3s ease;
         }
 
         svg {
@@ -80,9 +84,13 @@ class milShare extends LitElement {
           height: var(--share-icon-height, 24px);
           width: var(--share-icon-width, 24px);
         }
+
+        :host(:hover) #dropdownIcon svg {
+          fill: var(--share-icon-color-hover, #eee);
+        }
+
         #header {
           padding: 10px;
-          font-size: 16px;
           color: #555;
         }
       `
@@ -91,17 +99,9 @@ class milShare extends LitElement {
 
   render() {
     return html`
-      <div id="container">
-        <span id="dropdownIcon" @click="${this.openDropdown}">${share}</span>
-        <iron-dropdown
-          id="dropdown"
-          with-background
-          no-overlap
-          always-on-top
-          vertical-align="auto"
-          horizontal-align="auto"
-        >
-          <div slot="dropdown-content">
+
+<div id="dropdownIcon" @click="${()=>{this.opened=!this.opened}}">${share}</div>
+        <div id="dropdownPanel" class="${this.opened?"opened":""}">
             <div id="header">${this.header}</div>
             <!-- Sharingbutton Facebook -->
             <a
@@ -142,18 +142,10 @@ class milShare extends LitElement {
             >
               ${wappLogo}
             </a>
-          </div>
-        </iron-dropdown>
       </div>
+
+
     `;
-  }
-
-  firstUpdated() {
-    super.firstUpdated();
-  }
-
-  openDropdown() {
-    this.shadowRoot.getElementById("dropdown").open();
   }
 }
 

@@ -19,11 +19,10 @@
     "url": "https://github.com/madeInLagny/mil-share.git"
   },
   "homepage": "https://github.com/madeInLagny/mil-share",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "'Webcomponent that let share the current url on social networks and by email. Available links: Facebook, Twitter, Whatsapp, email.",
   "main": "mil-share.js",
   "dependencies": {
-    "@polymer/iron-dropdown": "^3.0.1",
     "@webcomponents/webcomponentsjs": "latest",
     "lit-element": "latest"
   }
